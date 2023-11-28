@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Búsqueda</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulario de Búsqueda</h1>
+
+    <form id="searchForm">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate">
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate">
+
+        <label for="commune">Commune:</label>
+        <input type="text" id="commune" name="commune">
+
+        <label for="maxPrice">Max Price:</label>
+        <input type="number" id="maxPrice" name="maxPrice">
+
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms">
+
+        <label for="sleeps">Beds:</label>
+        <input type="number" id="sleeps" name="sleeps">
+
+        <label for="maxDistance">Distance to Downtown (mts):</label>
+        <input type="number" id="maxDistance" name="maxDistance">
+
+        <button type="button" onclick="search()">Buscar</button>
+    </form>
+
+    <script>
+        function search() {
+            // Obtener los valores del formulario
+            var startDate = document.getElementById('startDate').value;
+            var endDate = document.getElementById('endDate').value;
+            var commune = document.getElementById('commune').value;
+            var maxPrice = document.getElementById('maxPrice').value;
+            var bedrooms = document.getElementById('bedrooms').value;
+            var sleeps = document.getElementById('sleeps').value;
+            var maxDistance = document.getElementById('maxDistance').value;
+
+            // Realizar la lógica de búsqueda aquí
+            // Puedes enviar los datos a un servidor para realizar la búsqueda y recibir los resultados
+
+            // Ejemplo de salida en la consola
+            console.log('Búsqueda realizada con los siguientes criterios:');
+            console.log('Fecha de inicio:', startDate);
+            console.log('Fecha de fin:', endDate);
+            console.log('Comuna:', commune);
+            console.log('Precio máximo:', maxPrice);
+            console.log('Número de habitaciones:', bedrooms);
+            console.log('Número de camas:', sleeps);
+            console.log('Distancia máxima al centro:', maxDistance);
+        }
+    </script>
+
+</body>
+</html>

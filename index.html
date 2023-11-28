@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Rent Website</title>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class = "header"> 
+    <nav>
+      <img src="Images/logo.png" class="logo">
+      <ul class="nav-links"> 
+        <li><a href="#"> Popular Places </a></li>
+        <li><a href="#"> Popular Places </a></li>
+        <li><a href="#"> Popular Places </a></li>
+      </ul>
+      <a href="#" class="register-btn"> Sign in </a>
+    </nav>
+    <div class="container">
+    <h1>Find Your Next Stay</h1>
+    <div class="search-bar">
+      <form>
+      <form id="searchForm">
+        <label="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate">
+
+        <label="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate">
+
+        <label="commune">Location:</label>
+        <input type="text" id="town" name="town">
+
+        <label="maxPrice">Max Price:</label>
+        <input type="number" id="maxPrice" name="maxPrice">
+
+        <label="bedrooms">Bedrooms:</label>
+        <input type="number" id="rooms_number" name="rooms_number">
+
+        <label="sleeps">Beds:</label>
+        <input type="number" id="beds_number" name="beds_number">
+
+        <label="maxDistance">Distance to Downtown (mts):</label>
+        <input type="number" id="distance" name="distance">
+
+        <button="button" onclick="search()">Search</button>
+      </form>
+
+
+    <script>
+          // Build URL with the form data
+          const dataBaseURL = 'https://dream-big-navy.vercel.app/api/test';
+          const data_El = document.getElementById('id_propertie');
+
+            // Fetch data from the server
+            fetch(dataBaseURL)
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+              })
+        function search() {
+            // Pour obtenir les valeurs du formulaire
+            const startDate = document.getElementById('startDate');
+            const endDate = document.getElementById('endDate');
+            const town= document.getElementById('town');
+            const maxPrice = document.getElementById('maxPrice');
+            const bedrooms = document.getElementById('rooms_number');
+            const beds = document.getElementById('beds_number');
+            const maxDistance = document.getElementById('distance');
+
+
+        function displayTowns (data) {
+            const town  = document.getElementById('towns');
+            exclusivesContainer.innerHTML= ' ';
+          
+            // Loop (for) to charge images
+
+            data.forEach(item => {
+              const div = document.createElement('div');
+              div.innerHTML = `
+                <img src="${item.photo}">
+                <span>
+                  <h3>${item.town}</h3>
+                  <p>From ${item.price}</p>
+                </span>
+              `;
+        exclusivesContainer.appendChild(div);
+      });
+    }
+  }
+    </script>
+    </div>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="sub-title">Exclusives</h2>
+    <div class="exclusives" id="exclusivesContainer">
+      <div> 
+        <img src="Images/photo1.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo2.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo3.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo4.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo5.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo5.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo5.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo5.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo5.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+      <div> 
+        <img src="Images/photo5.jpg">
+        <span>
+          <h3> Naples </h3>
+          <p> From 200$ </p>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

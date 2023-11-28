@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+<body>
+    <div id="properties"></div>
+    <script>
+        
+        // Build URL with the form data
+        const dataBaseURL = 'https://dream-big-navy.vercel.app/api/test';
+        const data_El = document.getElementById('id_propertie');
+
+            // Fetch data from the server
+            fetch(dataBaseURL)
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                updateUI(data)
+              })
+        function search() {
+            // Pour obtenir les valeurs du formulaire
+            const startDate = document.getElementById('startDate');
+            const endDate = document.getElementById('endDate');
+            const commune = document.getElementById('town');
+            const maxPrice = document.getElementById('maxPrice');
+            const bedrooms = document.getElementById('rooms_number');
+            const beds = document.getElementById('beds_number');
+            const maxDistance = document.getElementById('distance');
+
+
+        function updateUI (data) {
+            const exclusivesContainer = document.getElementById('exclusivesContainer');
+            exclusivesContainer.innerHTML= ' ';
+          
+            // Loop (for) to charge images
+
+            data.forEach(item => {
+              const div = document.createElement('div');
+              div.innerHTML = `
+                <img src="${item.photo}">
+                <span>
+                  <h3>${item.town}</h3>
+                  <p>From ${item.price}</p>
+                </span>
+              `;
+        exclusivesContainer.appendChild(div);
+      });
+    }
+  }
+
+    </script>
+</body>
+</html>
