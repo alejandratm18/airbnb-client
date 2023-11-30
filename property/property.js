@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(`http://localhost:3000/api/properties/:${id}`, {
     headers: headers,
     method: "GET",
-    // body: searchData ?? null,
   })
     .then((response) => {
       if (!response.ok) {

@@ -51,14 +51,16 @@ async function displayProperties(searchData = null) {
         // Handle errors
         console.error("Error fetching data:", error);
       });
-  });
+
+    });
 }
+displayProperties(null);
 
 // Define the search function
 function search() {
   // Function to get valid form values and add to searchData
   function addValueToSearchData(input, key, data) {
-    displayProperties({});
+    displayProperties();
 
     const value = input.value.trim();
     if (value) {
@@ -90,7 +92,8 @@ function search() {
   searchData = JSON.stringify(searchData);
 
   fetch("http://localhost:3000/api/properties", {
-    // headers: headers,
+    headers: headers,
+    method: "POST",
     body: searchData ?? null,
   })
     .then((response) => {
@@ -123,4 +126,3 @@ function search() {
     });
 }
 
-displayProperties(null);
