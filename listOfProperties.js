@@ -1,17 +1,16 @@
 // displayProperties.js
 let headers = new Headers();
 
-    headers.append("Content-Type", "application/json");
-    headers.append("Accept", "application/json");
+headers.append("Content-Type", "application/json");
+headers.append("Accept", "application/json");
 
-    headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5500/");
-    headers.append("Access-Control-Allow-Credentials", "true");
+headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5500/");
+headers.append("Access-Control-Allow-Credentials", "true");
 
-    
 async function displayProperties(searchData = null) {
   document.addEventListener("DOMContentLoaded", () => {
     const propertyListElement = document.getElementById("propetries_list");
-    
+
     // headers.append('GET', 'POST', 'OPTIONS');
     // Fetch data from the external API
 
@@ -38,6 +37,7 @@ async function displayProperties(searchData = null) {
           <a href="property/property.html?idProperty=${property.id_property}">
           <img src=${property.image_url}>
           <h3>${property.town}, ${property.street}</h3>
+          <p>Postal code: ${property.code}</p>
           <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>
           <p>Distance: ${property.distance} miles</p>
           <p>Price: $${property.price}</p>
@@ -54,11 +54,10 @@ async function displayProperties(searchData = null) {
   });
 }
 
-
 // Define the search function
 function search() {
-// Function to get valid form values and add to searchData
-function addValueToSearchData(input, key, data) {
+  // Function to get valid form values and add to searchData
+  function addValueToSearchData(input, key, data) {
     displayProperties({});
 
     const value = input.value.trim();
@@ -66,7 +65,7 @@ function addValueToSearchData(input, key, data) {
       data[key] = value;
     }
   }
-  
+
   // Capture form input values and construct the JSON object with form data
   let searchData = {};
   const formInputs = {
@@ -78,17 +77,17 @@ function addValueToSearchData(input, key, data) {
     beds_number: "bedsNumber",
     distance: "distance",
   };
-  
+
   for (const [inputId, key] of Object.entries(formInputs)) {
     const input = document.getElementById(inputId);
     if (input) {
       addValueToSearchData(input, key, searchData);
     }
   }
-  console.log(searchData)
-  
-//   displayProperties(JSON.stringify(searchData));
-searchData = JSON.stringify(searchData);
+  console.log(searchData);
+
+  //   displayProperties(JSON.stringify(searchData));
+  searchData = JSON.stringify(searchData);
 
   fetch("http://localhost:3000/api/properties", {
     // headers: headers,
@@ -109,6 +108,7 @@ searchData = JSON.stringify(searchData);
         <div>
         <img src="Images/photo1.jpg">
         <h3>${property.town}, ${property.street}</h3>
+        <p>Postal code: ${property.code}</p>
         <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>
         <p>Distance: ${property.distance} miles</p>
         <p>Price: $${property.price}</p>
@@ -124,4 +124,3 @@ searchData = JSON.stringify(searchData);
 }
 
 displayProperties(null);
-

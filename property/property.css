@@ -1,0 +1,10 @@
+.property_page_image {
+  width: 300px;
+  height: auto;
+}
+
+
+.flex_property_actions {
+    display: flex;
+    justify-content: space-between;
+}
