@@ -51,8 +51,7 @@ async function displayProperties(searchData = null) {
         // Handle errors
         console.error("Error fetching data:", error);
       });
-
-    });
+  });
 }
 displayProperties(null);
 
@@ -126,3 +125,35 @@ function search() {
     });
 }
 
+function createProperty() {
+  const propertyCreateElement = document.getElementById("property_create_form");
+
+  //   console.log(propertyCreateElement);
+
+  var formData = new FormData(propertyCreateElement);
+  var jsonData = {};
+
+  for (var [key, value] of formData.entries()) {
+    if (value.length !== 0) {
+      jsonData[key] = value;
+    }
+  }
+
+  //   console.log(JSON.stringify(jsonData));
+
+  fetch("http://localhost:3000/api/properties", {
+    headers: headers,
+    method: "POST",
+    body: JSON.stringify(jsonData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
+      }
+      console.log(response.json());
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Error fetching data:", error);
+    });
+}

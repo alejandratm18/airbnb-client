@@ -1,58 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>House Rent Website</title>
     <!-- css -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class = "header"> 
-    <nav>
-      <img src="Images/logo.png" class="logo">
-      <ul class="nav-links"> 
-        <li><a href="#"> Popular Places </a></li>
-        <li><a href="#"> Popular Places </a></li>
-        <li><a href="/rentals/rentals.html"> Your rentals </a></li>
-      </ul>
-      <a href="#" class="register-btn"> Sign in </a>
-    </nav>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <nav>
+        <img src="Images/logo.png" class="logo" />
+        <ul class="nav-links">
+          <li><a href="#"> Popular Places </a></li>
+          <li><a href="#"> Popular Places </a></li>
+          <li><a href="/rentals/rentals.html"> Your rentals </a></li>
+        </ul>
+        <a href="#" class="register-btn"> Sign in </a>
+      </nav>
+      <div class="main_forms_flex">
+        <div class="container">
+          <h1>Find Your Next Stay</h1>
+          <div class="search-bar">
+            <form id="searchForm">
+              <label for="startDate">Start Date:</label>
+              <input type="date" id="date_start" name="startDate" />
+
+              <label for="endDate">End Date:</label>
+              <input type="date" id="date_end" name="endDate" />
+
+              <label for="town">Location:</label>
+              <input type="text" id="town" name="town" />
+
+              <label for="maxPrice">Max Price:</label>
+              <input type="number" id="price" name="maxPrice" />
+
+              <label for="rooms_number">Bedrooms:</label>
+              <input type="number" id="rooms_number" name="rooms_number" />
+
+              <label for="beds_number">Beds:</label>
+              <input type="number" id="beds_number" name="beds_number" />
+
+              <label for="distance">Distance to Downtown (mts):</label>
+              <input type="number" id="distance" name="distance" />
+
+              <button type="button" onclick="search()">Search</button>
+            </form>
+          </div>
+        </div>
+        <div class="container">
+          <h1>Add your property for Rent</h1>
+          <div class="search-bar">
+            <form id="property_create_form">
+              <div>
+                <label for="email">Email Proprietor:</label>
+                <input
+                  value="your email"
+                  disabled
+                  type="text"
+                  id="email"
+                  name="email_proprietor"
+                />
+                <label for="town">Town:</label>
+                <input type="text" id="town" name="town" />
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street" />
+                <label for="code">Code:</label>
+                <input type="text" id="code" name="code" />
+                <label for="beds">Number of Beds:</label>
+                <input type="number" id="beds" name="beds_number" />
+              </div>
+              <div>
+                <label for="rooms">Number of Rooms:</label>
+                <input type="number" id="rooms" name="rooms_number" />
+                <label for="distance">Distance:</label>
+                <input type="number" id="distance" name="distance" />
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" />
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" name="image_url" /> <br> <br>
+                <input type="button" onclick="createProperty()" value="Create" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
-    <h1>Find Your Next Stay</h1>
-    <div class="search-bar">
-      <form id="searchForm">
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="date_start" name="startDate">
-      
-        <label for="endDate">End Date:</label>
-        <input type="date" id="date_end" name="endDate">
-      
-        <label for="town">Location:</label>
-        <input type="text" id="town" name="town">
-      
-        <label for="maxPrice">Max Price:</label>
-        <input type="number" id="price" name="maxPrice">
-      
-        <label for="rooms_number">Bedrooms:</label>
-        <input type="number" id="rooms_number" name="rooms_number">
-      
-        <label for="beds_number">Beds:</label>
-        <input type="number" id="beds_number" name="beds_number">
-      
-        <label for="distance">Distance to Downtown (mts):</label>
-        <input type="number" id="distance" name="distance">
-      
-        <button type="button" onclick="search()">Search</button>
-      </form>
-      
+      <h2 class="sub-title">Exclusives</h2>
+      <div class="exclusives" id="propetries_list"></div>
     </div>
-    </div>
-  </div>
-  <div class="container">
-    <h2 class="sub-title">Exclusives</h2>
-    <div class="exclusives" id="propetries_list"> </div>
-  </div>
-  <script src="listOfProperties.js"></script>
-</body>
+    <script src="listOfProperties.js"></script>
+  </body>
 </html>

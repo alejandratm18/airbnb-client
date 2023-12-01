@@ -1,115 +1,130 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
 }
 
 .header {
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(Images/banner.jpg);
-    background-size: cover;
-    background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(Images/banner.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 7%;
 }
 
 .logo {
-    width: 140px;
-    cursor: pointer;
-    border-radius: 20px;
+  width: 140px;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 .nav-links li {
-    list-style: none;
-    display: inline-block;
-    margin: 10px 30px;
+  list-style: none;
+  display: inline-block;
+  margin: 10px 30px;
 }
 
 .nav-links a {
-    text-decoration: wavy;
-    color: white;
+  text-decoration: wavy;
+  color: white;
 }
 
 .register-btn {
-    background-color: white;
-    color: black;
-    padding: 8px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
+  background-color: white;
+  color: black;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .container {
-    padding: 0 7%;
+  padding: 0 7%;
 }
 
 .header h1 {
-    font-size: 4vw;
-    font-weight: 500;
-    color: white;
-    text-align: center;
-    padding-top: 22%;
+  /* font-size: 4vw; */
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-top: 22%;
 }
 
 .search-bar form {
-    display: grid;
-    color: #fff;
-    align-items: center;
-    max-width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: transparent;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  color: #fff;
+  align-items: center;
+  /* max-width: 300px; */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar form input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 .search-bar form button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .search-bar form label {
-    display: block;
-    margin-top: 10px;
+  display: block;
+  margin-top: 10px;
 }
-
 
 /* ---------------- exclusives --------------------- */
 
 .sub-title {
-    margin: 50px 0 20px;
-    font-size: 2.2vw;
-    font-weight: 500;
-    color: #333;
+  margin: 50px 0 20px;
+  font-size: 2.2vw;
+  font-weight: 500;
+  color: #333;
 }
 
 .exclusives {
-    size-adjust: 50%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    grid-gap: 30px;
+  size-adjust: 50%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px;
 }
 
 .exclusives div img {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.main_forms_flex {
+  display: flex;
+}
+
+#property_update_form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start
+}
+
+#property_update_form>div {
+  width: 300px;
+  padding: 0 10px;
 }
