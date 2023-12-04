@@ -70,12 +70,12 @@ function search() {
   // Capture form input values and construct the JSON object with form data
   let searchData = {};
   const formInputs = {
-    date_start: "startDate",
-    date_end: "endDate",
+    date_start: "date_start",
+    date_end: "date_end",
     town: "town",
-    price: "maxPrice",
-    rooms_number: "roomsNumber",
-    beds_number: "bedsNumber",
+    price: "price",
+    rooms_number: "rooms_number",
+    beds_number: "beds_number",
     distance: "distance",
   };
 
@@ -87,13 +87,14 @@ function search() {
   }
   console.log(searchData);
 
-  //   displayProperties(JSON.stringify(searchData));
-  searchData = JSON.stringify(searchData);
 
-  fetch("http://localhost:3000/api/properties", {
+  //   displayProperties(JSON.stringify(searchData));
+  searchDataURLQuery =  new URLSearchParams(searchData);
+  const propertyListElement = document.getElementById("propetries_list");
+
+  fetch(`http://localhost:3000/api/properties/?${searchDataURLQuery}`, {
     headers: headers,
-    method: "POST",
-    body: searchData ?? null,
+    method: "GET",
   })
     .then((response) => {
       if (!response.ok) {
@@ -102,6 +103,8 @@ function search() {
       return response.json();
     })
     .then((properties) => {
+      // remove old list 
+      propertyListElement.innerHTML = " ";
       // Display properties in the DOM
       properties.forEach((property) => {
         const propertyElement = document.createElement("div");
