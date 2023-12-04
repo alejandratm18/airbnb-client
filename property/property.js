@@ -166,7 +166,7 @@ function reserveProperty() {
     }
   }
   jsonData.id_property = id;
-
+  console.log(jsonData);
   // console.log(JSON.stringify(jsonData),jsonData);
 
   const confirmation = confirm(
@@ -180,6 +180,8 @@ function reserveProperty() {
     })
       .then((response) => {
         if (!response.ok) {
+          console.log(response, response.statusText);
+          alert(response.statusText);
           throw new Error(`Network response was not ok: ${response.status}`);
         }
         return response.json();
