@@ -80,6 +80,8 @@ function search() {
   };
 
   for (const [inputId, key] of Object.entries(formInputs)) {
+    //!JUST USE var form = document.getElementById("property_update_form");  var formData = new FormData(form)
+
     const input = document.getElementById(inputId);
     if (input) {
       addValueToSearchData(input, key, searchData);
@@ -87,9 +89,8 @@ function search() {
   }
   console.log(searchData);
 
-
   //   displayProperties(JSON.stringify(searchData));
-  searchDataURLQuery =  new URLSearchParams(searchData);
+  searchDataURLQuery = new URLSearchParams(searchData);
   const propertyListElement = document.getElementById("propetries_list");
 
   fetch(`http://localhost:3000/api/properties/?${searchDataURLQuery}`, {
@@ -103,7 +104,7 @@ function search() {
       return response.json();
     })
     .then((properties) => {
-      // remove old list 
+      // remove old list
       propertyListElement.innerHTML = " ";
       // Display properties in the DOM
       properties.forEach((property) => {

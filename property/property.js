@@ -44,6 +44,60 @@ document.addEventListener("DOMContentLoaded", () => {
       // Handle errors
       console.error("Error fetching data:", error);
     });
+
+  var element = document.getElementById("made_reservations");
+
+  fetch(`http://localhost:3000/api/rentals/property/:${id}`, {
+    headers: headers,
+    method: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((rentals) => {
+      // Display properties in the DOM
+      rentals.forEach((rental) => {
+        const startDate = new Date(rental.date_start).toLocaleDateString(
+          undefined,
+          {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+          }
+        );
+
+        const endDate = new Date(rental.date_end).toLocaleDateString(
+          undefined,
+          {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+          }
+        );
+
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+                <p>Email Renter: ${rental.email_renter}</p>
+                <p>Start Date: ${startDate}</p>
+                <p>End Date: ${endDate}</p>
+                <p>Review: ${rental.review}</p>
+                <a href='/property/property.html?idProperty=${rental.id_property}'>Property ID: ${rental.id_property}</a>
+                <hr>
+              `;
+        element.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Error fetching data:", error);
+    });
 });
 
 function deleteProperty() {
@@ -79,12 +133,14 @@ function updateProperty() {
 
   // console.log(JSON.stringify(jsonData),jsonData);
 
-  const confirmation = confirm("Are you sure you want to update the info about the property?");
+  const confirmation = confirm(
+    "Are you sure you want to update the info about the property?"
+  );
   if (confirmation) {
     fetch(`http://localhost:3000/api/properties/:${id}`, {
       headers: headers,
       method: "PUT",
-      body: JSON.stringify(jsonData)
+      body: JSON.stringify(jsonData),
     })
       .then((response) => {
         if (!response.ok) {
@@ -97,5 +153,40 @@ function updateProperty() {
         console.error("Error fetching data:", error);
       });
   }
-  
+}
+
+function reserveProperty() {
+  var form = document.getElementById("property_reserve_form");
+  var formData = new FormData(form);
+  var jsonData = {};
+
+  for (var [key, value] of formData.entries()) {
+    if (value.length !== 0) {
+      jsonData[key] = value;
+    }
+  }
+  jsonData.id_property = id;
+
+  // console.log(JSON.stringify(jsonData),jsonData);
+
+  const confirmation = confirm(
+    "Are you sure you want to reserve the info about the property?"
+  );
+  if (confirmation) {
+    fetch(`http://localhost:3000/api/rentals`, {
+      headers: headers,
+      method: "POST",
+      body: JSON.stringify(jsonData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.status}`);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error fetching data:", error);
+      });
+  }
 }

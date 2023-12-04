@@ -11,20 +11,19 @@
 
     <div id="property"></div>
     <div>
-        <form action="reservation_confirmation.html" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            
+        <form id="property_reserve_form" method="post">            
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <input type="email" id="email_renter" name="email_renter" required><br><br>
             
             <label for="move_in_date">Move-in Date:</label>
-            <input type="date" id="move_in_date" name="move_in_date" required><br><br>
+            <input type="date" id="date_start" name="date_start" required><br><br>
             
             <label for="move_out_date">Move-out Date:</label>
-            <input type="date" id="move_out_date" name="move_out_date" required><br><br>
+            <input type="date" id="date_end" name="date_end" required><br><br>
+
+            <input type="text" id="review" name="review"><br><br>
             
-            <input type="submit" value="Reserve">
+            <input type="button" value="Reserve" onclick="reserveProperty()">
         </form>
     </div>
     <div>
@@ -56,9 +55,10 @@
             <label for="image">Image URL:</label>
             <input type="text" id="image" name="image_url"><br><br>
             
-            <input onclick="updateProperty()" value="Update">
+            <input type="button" onclick="updateProperty()" value="Update">
           </form>
     </div>
+    <div id="made_reservations"></div>
 </div>
 
     <button onclick="deleteProperty()"> Delete </button>
