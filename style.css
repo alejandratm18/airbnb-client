@@ -56,7 +56,7 @@ nav {
   font-weight: 500;
   color: white;
   text-align: center;
-  padding-top: 22%;
+  padding-top: 20px;
 }
 
 .search-bar form {
@@ -88,6 +88,10 @@ nav {
   cursor: pointer;
 }
 
+button {
+  width: 100%;
+}
+
 .search-bar form label {
   display: block;
   margin-top: 10px;
@@ -116,15 +120,22 @@ nav {
 
 .main_forms_flex {
   display: flex;
+  justify-content: center;
 }
 
 #property_update_form {
   display: flex;
   flex-direction: row;
-  align-items: flex-start
+  align-items: flex-start;
 }
 
-#property_update_form>div {
+#property_update_form > div {
   width: 300px;
   padding: 0 10px;
+}
+
+.property-item {
+  text-decoration: none;
+  color: #333;
+
 }

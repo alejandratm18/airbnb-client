@@ -34,8 +34,8 @@ async function displayProperties(searchData = null) {
           propertyElement.classList.add("property");
           propertyElement.innerHTML = `
           <div>
-          <a href="property/property.html?idProperty=${property.id_property}">
-          <img src=${property.image_url}>
+          <a class="property-item" href="property/property.html?idProperty=${property.id_property}">
+          <img width="240" height="160" src=${property.image_url}>
           <h3>${property.town}, ${property.street}</h3>
           <p>Postal code: ${property.code}</p>
           <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>

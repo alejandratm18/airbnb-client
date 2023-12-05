@@ -170,7 +170,7 @@ function reserveProperty() {
   // console.log(JSON.stringify(jsonData),jsonData);
 
   const confirmation = confirm(
-    "Are you sure you want to reserve the info about the property?"
+    "Are you sure you want to reserve this property?"
   );
   if (confirmation) {
     fetch(`http://localhost:3000/api/rentals`, {
