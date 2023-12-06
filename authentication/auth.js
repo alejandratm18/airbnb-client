@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // !window.location.href = "/dashboard";
         console.log(response);
       } else {
-        // Handle failed login (e.g., display error message)
-        console.error("Login failed");
+        // Handle failed signup (e.g., display error message)
+        alert("Login failed");
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      alert("Error during login:", error);
     }
   });
 
@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     let signUpObj = {};
     let signupFormData = new FormData(signupForm);
-    console.log(typeof signupFormData, signupFormData);
-    signupFormData.email = signupFormData.signup-email;
-    signupFormData.password = signupFormData.signup-password;
-    signupFormData.last_name = signupFormData.lastname;
-    signupFormData.phone_number = signupFormData.phone-number;
-
+    signUpObj.email = signupFormData.get("signup-email");
+    signUpObj.password = signupFormData.get("signup-password");
+    signUpObj.last_name = signupFormData.get("lastname");
+    signUpObj.phone_number = signupFormData.get("phone-number");
+    signUpObj.name = signupFormData.get("name");
+    console.log(signUpObj);
 
     try {
       const response = await fetch("http://localhost:3000/api/users/register", {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(signupFormData),
+        body: JSON.stringify(signUpObj),
       });
 
       if (response.ok) {
@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(response);
       } else {
         // Handle failed signup (e.g., display error message)
-        console.error("Signup failed");
+        alert("Signup failed");
       }
     } catch (error) {
-      console.error("Error during signup:", error);
+      alert("Error during signup:", error);
     }
   });
 });
