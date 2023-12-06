@@ -13,7 +13,7 @@
     <div>
         <form id="property_reserve_form" method="post">            
             <label for="email">Email:</label>
-            <input type="email" id="email_renter" name="email_renter" required><br><br>
+            <input disabled type="email" id="email_renter" name="email_renter" required><br><br>
             
             <label for="move_in_date">Move-in Date:</label>
             <input type="date" id="date_start" name="date_start" required><br><br>
@@ -29,7 +29,7 @@
     <div>
         <form id="property_update_form">
             <label for="email">Email Proprietor:</label>
-            <input value="your email" disabled type="text" id="email" name="email_proprietor"><br><br>
+            <input disabled type="text" id="email_proprietor" name="email_proprietor"><br><br>
             
             <label for="town">Town:</label>
             <input type="text" id="town" name="town"><br><br>
@@ -55,7 +55,7 @@
             <label for="image">Image URL:</label>
             <input type="text" id="image" name="image_url"><br><br>
             
-            <input type="button" onclick="updateProperty()" value="Update">
+            <input id="update_property_button" type="button" onclick="updateProperty()" value="Update">
           </form>
     </div>
     <div id="made_reservations"></div>

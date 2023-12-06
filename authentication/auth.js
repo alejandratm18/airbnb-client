@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
-    console.log({ email, password });
 
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch("http://localhost:3000/api/users/login", {
         method: "POST",
@@ -16,16 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
       if (response.ok) {
-        // Handle successful login (e.g., redirect to dashboard)
         // !window.location.href = "/dashboard";
-        console.log(response);
+        const responseMessage = await response.json();
+        localStorage.setItem("token", responseMessage.response.token);
+        localStorage.setItem("user_email", responseMessage.response.email);
       } else {
         // Handle failed signup (e.g., display error message)
-        alert("Login failed");
+        alert("Login failed ddd");
       }
     } catch (error) {
+        console.log(error)
       alert("Error during login:", error);
     }
   });
@@ -51,11 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
-        // Handle successful signup (e.g., redirect to login)
         //! window.location.href = "/login";
-        console.log(response);
+        const responseMessage = await response.json();
+        alert(responseMessage.message)
       } else {
-        // Handle failed signup (e.g., display error message)
         alert("Signup failed");
       }
     } catch (error) {

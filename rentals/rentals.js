@@ -7,7 +7,7 @@ headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5500/");
 headers.append("Access-Control-Allow-Credentials", "true");
 
 document.addEventListener("DOMContentLoaded", () => {
-  // const activeUserRentals = rentals.filter(rental => rental.email_renter === "user1@example.com");
+  
   // activeUserRentals.forEach(rental => {
   //   const listItem = document.createElement("li");
   //   listItem.textContent = `Rental ID: ${rental.email_renter}, Review: ${rental.review}, `;
@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then((rentals) => {
       // Display properties in the DOM
-      rentals.forEach((rental) => {
+      const activeUserRentals = rentals.filter(rental => rental.email_renter === localStorage.getItem("user_email"));
+      activeUserRentals.forEach((rental) => {
         const startDate = new Date(rental.date_start).toLocaleDateString(
           undefined,
           {

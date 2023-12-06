@@ -11,6 +11,14 @@ const id = urlParams.get("idProperty");
 
 document.addEventListener("DOMContentLoaded", () => {
   const propertyListElement = document.getElementById("property");
+  const propertyUpdateButton = document.getElementById(
+    "update_property_button"
+  );
+  const propertyUpdateEmailInput = document.getElementById("email_proprietor");
+  const propertyReserveEmailInput = document.getElementById("email_renter");
+  const currentUser = localStorage.getItem("user_email");
+
+  propertyReserveEmailInput.value = currentUser;
 
   fetch(`http://localhost:3000/api/properties/:${id}`, {
     headers: headers,
@@ -37,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <p>Price: $${property.price}</p>
         </div>
       `;
+        propertyUpdateEmailInput.value = property.email_proprietor;
+        if (currentUser !== property.email_proprietor) {
+          propertyUpdateButton.disabled = true;
+        }
         propertyListElement.appendChild(propertyElement);
       });
     })
