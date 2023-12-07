@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching data:", error);
     });
 });
-
+// doesn't work , propbably because of email 
 function modifyRental(id_location) {
   const date_start =  document.getElementById(`date_start_${id_location}`).value;
   const date_end =  document.getElementById(`date_end_${id_location}`).value;

@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
 
-    const token = localStorage.getItem("token");
     try {
       const response = await fetch("http://localhost:3000/api/users/login", {
         method: "POST",
@@ -52,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
-        //! window.location.href = "/login";
         const responseMessage = await response.json();
         alert(responseMessage.message)
       } else {

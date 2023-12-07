@@ -7,10 +7,11 @@ headers.append("Accept", "application/json");
 headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5500/");
 headers.append("Access-Control-Allow-Credentials", "true");
 
-async function displayProperties(searchData = null) {
+async function displayProperties() {
   document.addEventListener("DOMContentLoaded", () => {
     const propertyListElement = document.getElementById("propetries_list");
-
+    const createPropertyEmailInput = document.getElementById("email");
+    createPropertyEmailInput.value = localStorage.getItem("user_email")
     // headers.append('GET', 'POST', 'OPTIONS');
     // Fetch data from the external API
 
@@ -19,7 +20,7 @@ async function displayProperties(searchData = null) {
     fetch("http://localhost:3000/api/properties", {
       headers: headers,
       method: "GET",
-      body: searchData ?? null,
+      // body: searchData ?? null,
     })
       .then((response) => {
         if (!response.ok) {
@@ -53,13 +54,14 @@ async function displayProperties(searchData = null) {
       });
   });
 }
-displayProperties(null);
+
+displayProperties();
 
 // Define the search function
 function search() {
   // Function to get valid form values and add to searchData
   function addValueToSearchData(input, key, data) {
-    displayProperties();
+    // displayProperties();
 
     const value = input.value.trim();
     if (value) {
@@ -112,7 +114,7 @@ function search() {
         propertyElement.classList.add("property");
         propertyElement.innerHTML = `
         <div>
-        <img src="Images/photo1.jpg">
+        <img width="240" height="160" src="Images/photo1.jpg">
         <h3>${property.town}, ${property.street}</h3>
         <p>Postal code: ${property.code}</p>
         <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>

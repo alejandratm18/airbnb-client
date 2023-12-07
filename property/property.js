@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const propertyUpdateEmailInput = document.getElementById("email_proprietor");
   const propertyReserveEmailInput = document.getElementById("email_renter");
   const currentUser = localStorage.getItem("user_email");
+  const deleteButton = document.getElementById("delete-button")
 
   propertyReserveEmailInput.value = currentUser;
 
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         propertyUpdateEmailInput.value = property.email_proprietor;
         if (currentUser !== property.email_proprietor) {
           propertyUpdateButton.disabled = true;
+          deleteButton.disabled = true;
         }
         propertyListElement.appendChild(propertyElement);
       });
