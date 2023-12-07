@@ -49,8 +49,8 @@
       <form>
         <form id="searchForm"
   
-          <label="email_propietor">Email:</label>
-          <input type="text" id="email" name="email">
+          <label="email">Email:</label>
+          <input type="text" id="email_propietor" name="email">
   
           <label="street>Address:</label>
           <input type="text" id="address" name="address">
@@ -93,6 +93,13 @@
             const bedrooms = document.getElementById('rooms_number');
             const beds = document.getElementById('beds_number');
             const maxDistance = document.getElementById('distance');
+
+        function showResults (data) {
+            // to show the results
+
+            formData.getAll("town","beds_number","rooms_number","distance","prix");
+
+        }    
 
 
         function displayTowns (data) {
