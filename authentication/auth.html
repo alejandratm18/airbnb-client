@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication Page</title>
+    <link rel="stylesheet" type="text/css" href="auth.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login Form</h1>
+        <form id="login-form">
+            <label for="login-email">Email:</label>
+            <input type="text" id="login-email" name="login-email">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="login-password">
+            <button type="button" onclick="togglePasswordVisibility()">Hide/Show password</button> <br/>
+            <input type="submit" value="Login">
+        </form>
+        <h1>Sign Up Form</h1>
+        <form id="signup-form">
+            <label for="signup-email">Email:</label>
+            <input type="text" id="signup-email" name="signup-email">
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" name="signup-password">
+            <button type="button" onclick="togglePasswordVisibility()">Hide/Show password</button> <br/>
+            <label for="signup-password">First Name:</label>
+            <input type="text" id="signup-name" name="name">
+            <label for="signup-password">Last Name:</label>
+            <input type="text" id="signup-lastname" name="lastname">
+            <label for="signup-password">Phone Number:</label>
+            <input type="tel" id="signup-phone-number" name="phone-number">
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</body>
+<script src="auth.js"></script>
+</html>
