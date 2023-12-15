@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const propertyUpdateEmailInput = document.getElementById("email_proprietor");
   const propertyReserveEmailInput = document.getElementById("email_renter");
   const currentUser = localStorage.getItem("user_email");
-  const deleteButton = document.getElementById("delete-button")
+  const deleteButton = document.getElementById("delete-button");
 
   propertyReserveEmailInput.value = currentUser;
 
@@ -170,9 +170,10 @@ function updateProperty() {
 }
 
 function reserveProperty() {
-  var form = document.getElementById("property_reserve_form");
-  var formData = new FormData(form);
-  var jsonData = {};
+  let form = document.getElementById("property_reserve_form");
+  const emailRenter = document.getElementById("email_renter").value;
+  let formData = new FormData(form);
+  let jsonData = {};
 
   for (var [key, value] of formData.entries()) {
     if (value.length !== 0) {
@@ -180,6 +181,7 @@ function reserveProperty() {
     }
   }
   jsonData.id_property = id;
+  jsonData.email_renter = emailRenter;
   console.log(jsonData);
   // console.log(JSON.stringify(jsonData),jsonData);
 

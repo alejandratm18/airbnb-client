@@ -11,7 +11,7 @@ async function displayProperties() {
   document.addEventListener("DOMContentLoaded", () => {
     const propertyListElement = document.getElementById("propetries_list");
     const createPropertyEmailInput = document.getElementById("email");
-    createPropertyEmailInput.value = localStorage.getItem("user_email")
+    createPropertyEmailInput.value = localStorage.getItem("user_email");
     // headers.append('GET', 'POST', 'OPTIONS');
     // Fetch data from the external API
 
@@ -133,8 +133,7 @@ function search() {
 
 function createProperty() {
   const propertyCreateElement = document.getElementById("property_create_form");
-
-  //   console.log(propertyCreateElement);
+  const createPropertyEmailInput = document.getElementById("email").value;
 
   var formData = new FormData(propertyCreateElement);
   var jsonData = {};
@@ -145,7 +144,9 @@ function createProperty() {
     }
   }
 
-  //   console.log(JSON.stringify(jsonData));
+  jsonData["email_proprietor"] = createPropertyEmailInput;
+
+  console.log(jsonData);
 
   fetch("http://localhost:3000/api/properties", {
     headers: headers,
