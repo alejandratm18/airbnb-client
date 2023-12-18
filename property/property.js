@@ -98,12 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const listItem = document.createElement("li");
         listItem.innerHTML = `
+                <div class="card">
                 <p>Email Renter: ${rental.email_renter}</p>
                 <p>Start Date: ${startDate}</p>
                 <p>End Date: ${endDate}</p>
                 <p>Review: ${rental.review}</p>
                 <a href='/property/property.html?idProperty=${rental.id_property}'>Property ID: ${rental.id_property}</a>
-                <hr>
+                </div>
               `;
         element.appendChild(listItem);
       });

@@ -7,12 +7,6 @@ headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5500/");
 headers.append("Access-Control-Allow-Credentials", "true");
 
 document.addEventListener("DOMContentLoaded", () => {
-  
-  // activeUserRentals.forEach(rental => {
-  //   const listItem = document.createElement("li");
-  //   listItem.textContent = `Rental ID: ${rental.email_renter}, Review: ${rental.review}, `;
-  //   rentalsListElement.appendChild(listItem);
-  // }); //! for displaying according to active user
   const rentalsListElement = document.getElementById("rentalsList");
 
   fetch("http://localhost:3000/api/rentals", {
