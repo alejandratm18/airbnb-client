@@ -11,7 +11,10 @@ async function displayProperties() {
   document.addEventListener("DOMContentLoaded", () => {
     const propertyListElement = document.getElementById("propetries_list");
     const createPropertyEmailInput = document.getElementById("email");
-    createPropertyEmailInput.value = localStorage.getItem("user_email");
+    const welcomeSign = document.getElementById("welcome-sign");
+    const signedInEmail = localStorage.getItem("user_email");
+    createPropertyEmailInput.value = signedInEmail ?? "not logged in";
+    welcomeSign.innerHTML = signedInEmail ?? "You're not logged in";
     // headers.append('GET', 'POST', 'OPTIONS');
     // Fetch data from the external API
 
@@ -34,7 +37,7 @@ async function displayProperties() {
           const propertyElement = document.createElement("div");
           propertyElement.classList.add("property");
           propertyElement.innerHTML = `
-          <div>
+          <div  style="width: 205px;">
           <a class="property-item" href="property/property.html?idProperty=${property.id_property}">
           <img width="240" height="160" src=${property.image_url}>
           <h3>${property.town}, ${property.street}</h3>
@@ -113,13 +116,15 @@ function search() {
         const propertyElement = document.createElement("div");
         propertyElement.classList.add("property");
         propertyElement.innerHTML = `
-        <div>
-        <img width="240" height="160" src="Images/photo1.jpg">
+        <div style="width: 205px;">
+        <a class="property-item" href="property/property.html?idProperty=${property.id_property}">
+          <img width="240" height="160" src=${property.image_url}>
         <h3>${property.town}, ${property.street}</h3>
         <p>Postal code: ${property.code}</p>
         <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>
         <p>Distance: ${property.distance} miles</p>
         <p>Price: $${property.price}</p>
+        </a>
         </div>
       `;
         propertyListElement.appendChild(propertyElement);

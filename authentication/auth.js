@@ -1,6 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
   const signupForm = document.getElementById("signup-form");
+  const currentUser = localStorage.getItem("user_email");
+
+  if (currentUser) {
+    while (auth_actions.firstChild) {
+      auth_actions.removeChild(auth_actions.firstChild);
+    }
+    let currentUserBanner = document.createElement("div");
+    currentUserBanner.innerHTML = `You are current logged in under ${currentUser} email`;
+
+    let logoutButton = document.createElement("button");
+    logoutButton.innerText = "Logout";
+    logoutButton.classList.add("auth-action");
+
+    logoutButton.addEventListener("click", logoutAction);
+
+    auth_actions.appendChild(currentUserBanner);
+    auth_actions.appendChild(logoutButton);
+  }
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -16,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ email, password }),
       });
       if (response.ok) {
-        // !window.location.href = "/dashboard";
+        window.location.href = "/index.html";
         const responseMessage = await response.json();
         localStorage.setItem("token", responseMessage.response.token);
         localStorage.setItem("user_email", responseMessage.response.email);
@@ -25,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Login failed ddd");
       }
     } catch (error) {
-        console.log(error)
+      console.log(error);
       alert("Error during login:", error);
     }
   });
@@ -52,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const responseMessage = await response.json();
-        alert(responseMessage.message)
+        alert(responseMessage.message);
       } else {
         alert("Signup failed");
       }
@@ -72,4 +90,10 @@ function togglePasswordVisibility() {
     loginPasswordInput.type = "password";
     signupPasswordInput.type = "password";
   }
+}
+
+function logoutAction() {
+  localStorage.setItem("token", "");
+  localStorage.setItem("user_email", "");
+  location.reload();
 }
