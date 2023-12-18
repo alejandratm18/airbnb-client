@@ -1,4 +1,3 @@
-// displayProperties.js
 let headers = new Headers();
 
 headers.append("Content-Type", "application/json");
@@ -17,10 +16,9 @@ async function displayProperties() {
     welcomeSign.innerHTML = signedInEmail ?? "You're not logged in";
     // headers.append('GET', 'POST', 'OPTIONS');
     // Fetch data from the external API
-
-    // http://localhost:3000/api/properties
+    // http://`${envVars.BASE_LOCAL_ENDPOINT}/properties
     // https://airbnb-server-s1jv.onrender.com/api/properties this shit is not working
-    fetch("http://localhost:3000/api/properties", {
+    fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties`, {
       headers: headers,
       method: "GET",
       // body: searchData ?? null,
@@ -98,7 +96,7 @@ function search() {
   searchDataURLQuery = new URLSearchParams(searchData);
   const propertyListElement = document.getElementById("propetries_list");
 
-  fetch(`http://localhost:3000/api/properties/?${searchDataURLQuery}`, {
+  fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties/?${searchDataURLQuery}`, {
     headers: headers,
     method: "GET",
   })
@@ -153,7 +151,7 @@ function createProperty() {
 
   console.log(jsonData);
 
-  fetch("http://localhost:3000/api/properties", {
+  fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties`, {
     headers: headers,
     method: "POST",
     body: JSON.stringify(jsonData),

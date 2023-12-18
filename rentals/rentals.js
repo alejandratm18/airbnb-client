@@ -8,7 +8,7 @@ headers.append("Access-Control-Allow-Credentials", "true");
 
 document.addEventListener("DOMContentLoaded", () => {
   const rentalsListElement = document.getElementById("rentalsList");
-  fetch("http://localhost:3000/api/rentals", {
+  fetch(`${envVars.BASE_LOCAL_ENDPOINT}/rentals`, {
     headers: headers,
     method: "GET",
   })
@@ -157,7 +157,7 @@ function modifyRental(id_location) {
   if (review) body.review = review;
 
   if (confirmation) {
-    fetch(`http://localhost:3000/api/rentals/:${id_location}`, {
+    fetch(`${envVars.BASE_LOCAL_ENDPOINT}/rentals/:${id_location}`, {
       headers: headers,
       method: "PUT",
       body: JSON.stringify(body),

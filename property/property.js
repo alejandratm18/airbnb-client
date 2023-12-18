@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   propertyReserveEmailInput.value = currentUser;
 
-  fetch(`http://localhost:3000/api/properties/:${id}`, {
+  fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties/:${id}`, {
     headers: headers,
     method: "GET",
   })
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   var element = document.getElementById("made_reservations");
 
-  fetch(`http://localhost:3000/api/rentals/property/:${id}`, {
+  fetch(`${envVars.BASE_LOCAL_ENDPOINT}/rentals/property/:${id}`, {
     headers: headers,
     method: "GET",
   })
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function deleteProperty() {
   const confirmation = confirm("Are you sure you want to delete?");
   if (confirmation) {
-    fetch(`http://localhost:3000/api/properties/:${id}`, {
+    fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties/:${id}`, {
       headers: headers,
       method: "DELETE",
     })
@@ -152,7 +152,7 @@ function updateProperty() {
     "Are you sure you want to update the info about the property?"
   );
   if (confirmation) {
-    fetch(`http://localhost:3000/api/properties/:${id}`, {
+    fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties/:${id}`, {
       headers: headers,
       method: "PUT",
       body: JSON.stringify(jsonData),
@@ -190,7 +190,7 @@ function reserveProperty() {
     "Are you sure you want to reserve this property?"
   );
   if (confirmation) {
-    fetch(`http://localhost:3000/api/rentals`, {
+    fetch(`${envVars.BASE_LOCAL_ENDPOINT}/rentals`, {
       headers: headers,
       method: "POST",
       body: JSON.stringify(jsonData),

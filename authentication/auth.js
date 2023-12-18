@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
   const signupForm = document.getElementById("signup-form");
   const currentUser = localStorage.getItem("user_email");
-
   if (currentUser) {
     while (auth_actions.firstChild) {
       auth_actions.removeChild(auth_actions.firstChild);
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("login-password").value;
 
     try {
-      const response = await fetch("http://localhost:3000/api/users/login", {
+      const response = await fetch(`${envVars.BASE_LOCAL_ENDPOINT}/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(signUpObj);
 
     try {
-      const response = await fetch("http://localhost:3000/api/users/register", {
+      const response = await fetch(`${envVars.BASE_LOCAL_ENDPOINT}/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
