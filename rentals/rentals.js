@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return response.json();
     })
-    .then((rentals) => {
+    .then((allRentals) => {
+      const rentals = allRentals.filter(rental => rental.email_renter === localStorage.getItem("user_email"));
       // Separate rentals into passed and upcoming
       const today = new Date();
       const passedRentals = rentals.filter(
