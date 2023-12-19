@@ -14,14 +14,10 @@ async function displayProperties() {
     const signedInEmail = localStorage.getItem("user_email");
     createPropertyEmailInput.value = signedInEmail ?? "not logged in";
     welcomeSign.innerHTML = signedInEmail ?? "You're not logged in";
-    // headers.append('GET', 'POST', 'OPTIONS');
-    // Fetch data from the external API
-    // http://`${envVars.BASE_LOCAL_ENDPOINT}/properties
-    // https://airbnb-server-s1jv.onrender.com/api/properties this shit is not working
+
     fetch(`${envVars.BASE_LOCAL_ENDPOINT}/properties`, {
       headers: headers,
       method: "GET",
-      // body: searchData ?? null,
     })
       .then((response) => {
         if (!response.ok) {
@@ -41,7 +37,7 @@ async function displayProperties() {
           <h3>${property.town}, ${property.street}</h3>
           <p>Postal code: ${property.code}</p>
           <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>
-          <p>Distance: ${property.distance} miles</p>
+          <p>Distance: ${property.distance} meters</p>
           <p>Price: $${property.price}</p>
           </a>
           </div>
@@ -83,14 +79,12 @@ function search() {
   };
 
   for (const [inputId, key] of Object.entries(formInputs)) {
-    //!JUST USE var form = document.getElementById("property_update_form");  var formData = new FormData(form)
 
     const input = document.getElementById(inputId);
     if (input) {
       addValueToSearchData(input, key, searchData);
     }
   }
-  console.log(searchData);
 
   //   displayProperties(JSON.stringify(searchData));
   searchDataURLQuery = new URLSearchParams(searchData);
@@ -120,7 +114,7 @@ function search() {
         <h3>${property.town}, ${property.street}</h3>
         <p>Postal code: ${property.code}</p>
         <p>Beds: ${property.beds_number}, Rooms: ${property.rooms_number}</p>
-        <p>Distance: ${property.distance} miles</p>
+        <p>Distance: ${property.distance} meters</p>
         <p>Price: $${property.price}</p>
         </a>
         </div>
